@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:tarq/screens/onboarding.dart';
 
 void main() {
   runApp(const App());
@@ -9,10 +11,16 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     return MaterialApp(
       title: "TarQ",
       theme: ThemeData(
-          scaffoldBackgroundColor: const Color.fromRGBO(31, 31, 31, 1.0)),
+        scaffoldBackgroundColor: const Color(0xFFF9FAFB),
+      ),
+      home: OnboardingScreen(),
     );
   }
 }
