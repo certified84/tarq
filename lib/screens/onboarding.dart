@@ -1,9 +1,17 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:tarq/data/model/onboarding_item.dart';
-import 'package:tarq/screens/signin.dart';
+import 'package:tarq/screens/signup.dart';
 
-class OnboardingScreen extends StatelessWidget {
+class OnboardingScreen extends StatefulWidget {
   OnboardingScreen({super.key});
+
+  @override
+  State<StatefulWidget> createState() => _OnboardingScreenState();
+}
+
+class _OnboardingScreenState extends State<OnboardingScreen> {
   late double _deviceHeight, _deviceWidth;
 
   final onboardingItems = [
@@ -16,14 +24,18 @@ class OnboardingScreen extends StatelessWidget {
     OnboardingItem("assets/images/onboarding1.png", "title", "description"),
   ];
   final _pageController = PageController();
+  var currentPage = 0.0;
 
   @override
   Widget build(BuildContext context) {
     _deviceHeight = MediaQuery.of(context).size.height;
     _deviceWidth = MediaQuery.of(context).size.width;
-    _pageController.addListener(() {
-      double? position = _pageController.page;
-    });
+    _pageController.addListener(
+      () => setState(() {
+        currentPage = _pageController.page!;
+        log(currentPage);
+      }),
+    );
 
     return Scaffold(
       body: SafeArea(
@@ -46,7 +58,7 @@ class OnboardingScreen extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const SignupScreen()));
+                                builder: (context) => const SignUpScreen()));
                       },
                       child: const Text(
                         'Skip',
@@ -70,18 +82,19 @@ class OnboardingScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: onboardingItems
-                        .map((e) => _pageIndicator(_pageController.hasClients))
+                        .map((e) => _pageIndicator(_pageController.hasClients &&
+                            _pageController.page! == currentPage))
                         .toList(),
                   ),
                   SizedBox(
-                    width: _deviceWidth * .7,
+                    width: _deviceWidth * .85,
                     height: 50,
                     child: ElevatedButton(
                       onPressed: () {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const SignupScreen()));
+                                builder: (context) => const SignUpScreen()));
                       },
                       style: ButtonStyle(
                         foregroundColor:
@@ -100,7 +113,7 @@ class OnboardingScreen extends StatelessWidget {
                         style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
-                          fontSize: 16,
+                          fontSize: 14,
                         ),
                       ),
                     ),
@@ -124,7 +137,7 @@ class OnboardingScreen extends StatelessWidget {
           Text(
             onboardingItem.title,
             textAlign: TextAlign.center,
-            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
           ),
           Text(
             onboardingItem.description,

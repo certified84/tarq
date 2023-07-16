@@ -8,6 +8,10 @@ Widget textField(
   return SizedBox(
     width: width,
     child: TextFormField(
+      style: const TextStyle(
+        fontWeight: FontWeight.w500,
+        fontSize: 14,
+      ),
       keyboardType: keyboardType,
       decoration: InputDecoration(
         fillColor: const Color(0xFFF9FAFB),
@@ -42,6 +46,10 @@ Widget passwordTextField(
   return SizedBox(
     width: width,
     child: TextFormField(
+      style: const TextStyle(
+        fontWeight: FontWeight.w500,
+        fontSize: 14,
+      ),
       keyboardType: TextInputType.visiblePassword,
       obscureText: !showPassword,
       enableSuggestions: false,

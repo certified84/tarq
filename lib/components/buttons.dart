@@ -5,7 +5,7 @@ Widget actionButton(
     {required width, required text, void Function()? onPressed}) {
   return SizedBox(
     width: width,
-    height: 50,
+    height: 45,
     child: ElevatedButton(
       onPressed: onPressed,
       style: ButtonStyle(
@@ -23,18 +23,17 @@ Widget actionButton(
         style: const TextStyle(
           color: Colors.white,
           fontWeight: FontWeight.bold,
-          fontSize: 16,
+          fontSize: 14,
         ),
       ),
     ),
   );
 }
 
-Widget googleButton(
-    {required width, required text, void Function()? onPressed}) {
+Widget googleButton({required width, void Function()? onPressed}) {
   return SizedBox(
     width: width,
-    height: 50,
+    height: 45,
     child: OutlinedButton(
       onPressed: onPressed,
       style: ButtonStyle(
@@ -57,11 +56,10 @@ Widget googleButton(
   );
 }
 
-Widget appleButton(
-    {required width, required text, void Function()? onPressed}) {
+Widget appleButton({required width, void Function()? onPressed}) {
   return SizedBox(
     width: width,
-    height: 50,
+    height: 45,
     child: OutlinedButton(
       onPressed: onPressed,
       style: ButtonStyle(

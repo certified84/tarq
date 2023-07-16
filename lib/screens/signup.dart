@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:tarq/components/buttons.dart';
 import 'package:tarq/components/textfields.dart';
+import 'package:tarq/screens/signin.dart';
 
-class SignInScreen extends StatefulWidget {
-  const SignInScreen({super.key});
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
 
   @override
-  State<StatefulWidget> createState() => _SignInScreenState();
+  State<StatefulWidget> createState() => _SignUpScreenState();
 }
 
-class _SignInScreenState extends State<SignInScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
   late double _deviceHeight, _deviceWidth;
   var showPassword = false;
   @override
@@ -37,7 +38,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   ),
                 ),
                 const Text(
-                  'Welcome back Sign in to your account',
+                  'Create an account to get started',
                   style: TextStyle(
                     color: Color(0xFF6B7280),
                     fontWeight: FontWeight.normal,
@@ -62,23 +63,9 @@ class _SignInScreenState extends State<SignInScreen> {
                 ),
                 const SizedBox(height: 24),
                 Align(
-                    alignment: Alignment.centerLeft,
-                    child: TextButton(
-                      onPressed: () {},
-                      child: const Text(
-                        'Forgot Password?',
-                        style: TextStyle(
-                          color: Color(0xFF5F5FE0),
-                          fontSize: 12,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    )),
-                const SizedBox(height: 24),
-                Align(
                   child: actionButton(
                     width: _deviceWidth,
-                    text: 'Sign In',
+                    text: 'Sign Up',
                     onPressed: () => {},
                   ),
                 ),
@@ -146,7 +133,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text(
-                      "Don't have an account?",
+                      "Already have an account?",
                       style: TextStyle(
                         color: Color(0xFF6B7280),
                         fontSize: 14,
@@ -154,10 +141,13 @@ class _SignInScreenState extends State<SignInScreen> {
                     ),
                     TextButton(
                       onPressed: () {
-                        Navigator.pop(context);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SignInScreen()));
                       },
                       child: const Text(
-                        'Sign Up',
+                        'Sign In',
                         style: TextStyle(
                           color: Color(0xFF1DAB87),
                           fontWeight: FontWeight.bold,
