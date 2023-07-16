@@ -1,10 +1,9 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:tarq/data/model/onboarding_item.dart';
+import 'package:tarq/screens/signin.dart';
 
 class OnboardingScreen extends StatelessWidget {
-  OnboardingScreen({Key? key}) : super(key: key);
+  OnboardingScreen({super.key});
   late double _deviceHeight, _deviceWidth;
 
   final onboardingItems = [
@@ -12,7 +11,7 @@ class OnboardingScreen extends StatelessWidget {
         "Your finance work starts here. Our here to help you track and deal with speeding up your transactions."),
     OnboardingItem(
         "assets/images/onboarding2.png",
-        "The fastes transaction process only here",
+        "The fastest transaction process only here",
         "Get easy to pay all your bills with just a few steps. Paying your bills becoome fast and efficient"),
     OnboardingItem("assets/images/onboarding1.png", "title", "description"),
   ];
@@ -43,7 +42,12 @@ class OnboardingScreen extends StatelessWidget {
                   Align(
                     alignment: Alignment.centerRight,
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SignupScreen()));
+                      },
                       child: const Text(
                         'Skip',
                         style: TextStyle(
@@ -73,7 +77,12 @@ class OnboardingScreen extends StatelessWidget {
                     width: _deviceWidth * .7,
                     height: 50,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SignupScreen()));
+                      },
                       style: ButtonStyle(
                         foregroundColor:
                             MaterialStateProperty.all<Color>(Colors.white),
