@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tarq/components/buttons.dart';
 import 'package:tarq/components/textfields.dart';
+import 'package:tarq/screens/account_setup/account_setup.dart';
 import 'package:tarq/screens/signin.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -66,7 +67,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   child: actionButton(
                     width: _deviceWidth,
                     text: 'Sign Up',
-                    onPressed: () => {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => AccountSetupScreen()));
+                    },
                   ),
                 ),
                 const SizedBox(height: 32),

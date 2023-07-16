@@ -77,12 +77,12 @@ Widget passwordTextField(
         suffixIcon: IconButton(
           icon: showPassword
               ? const Icon(
-                  Icons.remove_red_eye,
+                  Icons.visibility_outlined,
                   size: 24,
                   color: Colors.black,
                 )
               : const Icon(
-                  Icons.remove_red_eye,
+                  Icons.visibility_off_outlined,
                   size: 24,
                   color: Colors.black,
                 ),
