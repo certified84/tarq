@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tarq/data/model/setup_info.dart';
+import 'package:tarq/screens/complete_profile.dart';
+import 'package:tarq/screens/work_place.dart';
 
 class AccountSetupProgressScreen extends StatefulWidget {
   const AccountSetupProgressScreen({super.key});
@@ -112,9 +114,17 @@ class _AccountSetupProgressScreenState
               break;
 
             case 'personnal':
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const CompleteProfileScreen()));
               break;
 
             case 'work':
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const WorkPlaceScreen()));
               break;
 
             case 'card':

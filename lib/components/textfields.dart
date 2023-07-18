@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 Widget textField(
@@ -83,6 +85,66 @@ Widget passwordTextField(
                 )
               : const Icon(
                   Icons.visibility_off_outlined,
+                  size: 24,
+                  color: Colors.black,
+                ),
+          tooltip: 'Hide/Show password',
+          onPressed: onPressed,
+        ),
+      ),
+    ),
+  );
+}
+
+Widget dropdownTextField(
+    {required double width,
+    TextInputType? keyboardType,
+    String? hintText,
+    required bool expanded,
+    required Function()? onPressed,
+    void Function(String)? onChanged}) {
+  return SizedBox(
+    width: width,
+    child: TextFormField(
+      readOnly: true,
+      enableSuggestions: false,
+      autocorrect: false,
+      style: const TextStyle(
+        fontWeight: FontWeight.w500,
+        fontSize: 14,
+      ),
+      onTap: onPressed,
+      onChanged: onChanged,
+      keyboardType: keyboardType,
+      decoration: InputDecoration(
+        fillColor: const Color(0xFFF9FAFB),
+        filled: true,
+        enabledBorder: const OutlineInputBorder(
+          borderSide: BorderSide(
+            color: Color(0xFFF9FAFB),
+          ),
+          borderRadius: BorderRadius.all(Radius.circular(16)),
+        ),
+        focusedBorder: const OutlineInputBorder(
+          borderSide: BorderSide(
+            width: 2,
+            color: Color(0xFF3734A9),
+          ),
+          borderRadius: BorderRadius.all(Radius.circular(16)),
+        ),
+        border: const OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(16)),
+        ),
+        hintText: hintText,
+        suffixIcon: IconButton(
+          icon: expanded
+              ? const Icon(
+                  Icons.arrow_drop_up,
+                  size: 24,
+                  color: Colors.black,
+                )
+              : const Icon(
+                  Icons.arrow_drop_down,
                   size: 24,
                   color: Colors.black,
                 ),

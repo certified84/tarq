@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tarq/components/buttons.dart';
 import 'package:tarq/data/model/setup_info.dart';
 import 'package:tarq/screens/account_setup/account_setup_progress.dart';
@@ -46,10 +45,9 @@ class AccountSetupScreen extends StatelessWidget {
       body: SafeArea(
         child: Container(
           width: _deviceWidth,
-          padding: EdgeInsets.only(
-            bottom: _deviceHeight * .05,
-            left: _deviceWidth * .05,
-            right: _deviceWidth * .05,
+          padding: EdgeInsets.symmetric(
+            vertical: _deviceHeight * .02,
+            horizontal: _deviceWidth * .05,
           ),
           child: ListView(
             children: [
@@ -129,7 +127,7 @@ class AccountSetupScreen extends StatelessWidget {
             ),
             Container(
               padding: const EdgeInsets.only(left: 8),
-              width: _deviceWidth * .79,
+              // width: _deviceWidth * .79,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -143,6 +141,8 @@ class AccountSetupScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   Text(
+                    softWrap: false,
+                    overflow: TextOverflow.clip,
                     setupInfo.description,
                     style: const TextStyle(
                       color: Color(0xFF80858A),

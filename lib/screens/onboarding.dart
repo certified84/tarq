@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:tarq/data/model/onboarding_item.dart';
 import 'package:tarq/screens/signup.dart';
@@ -33,7 +31,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     _pageController.addListener(
       () => setState(() {
         currentPage = _pageController.page!;
-        log(currentPage);
       }),
     );
 
