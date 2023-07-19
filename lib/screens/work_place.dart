@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tarq/components/buttons.dart';
 import 'package:tarq/components/textfields.dart';
 import 'package:dotted_border/dotted_border.dart';
+import 'package:vector_graphics/vector_graphics.dart';
 
 class WorkPlaceScreen extends StatefulWidget {
   const WorkPlaceScreen({super.key});
@@ -12,6 +14,7 @@ class WorkPlaceScreen extends StatefulWidget {
 
 class _WorkPlaceScreenState extends State<WorkPlaceScreen> {
   late double _deviceHeight, _deviceWidth;
+  String? fileName;
   var stateExpanded = false;
 
   @override
@@ -97,7 +100,7 @@ class _WorkPlaceScreenState extends State<WorkPlaceScreen> {
                   const SizedBox(height: 8),
                   textField(
                     width: _deviceWidth,
-                    hintText: 'Please enter address of Work place',
+                    hintText: 'Please enter address of work place',
                   ),
                   const SizedBox(height: 16),
                   const Text(
@@ -111,7 +114,7 @@ class _WorkPlaceScreenState extends State<WorkPlaceScreen> {
                   dropdownTextField(
                     width: _deviceWidth,
                     expanded: stateExpanded,
-                    hintText: 'Please Enter phone number',
+                    hintText: 'Please select',
                     onPressed: () {
                       setState(() {
                         stateExpanded = !stateExpanded;
@@ -123,24 +126,52 @@ class _WorkPlaceScreenState extends State<WorkPlaceScreen> {
                   const SizedBox(
                     height: 8.0,
                   ),
-                  DottedBorder(
-                    dashPattern: const [3, 3],
-                    borderType: BorderType.RRect,
-                    radius: const Radius.circular(10),
-                    color: const Color(0xFF8C8C8C),
-                    strokeWidth: 1.5,
-                    child: Container(
-                      height: 55.0,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          style: BorderStyle.none,
+                  GestureDetector(
+                    onTap: () {},
+                    child: DottedBorder(
+                      dashPattern: const [3, 3],
+                      borderType: BorderType.RRect,
+                      radius: const Radius.circular(10),
+                      color: const Color(0xFF8C8C8C),
+                      strokeWidth: 1.5,
+                      child: Container(
+                        height: 60.0,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            style: BorderStyle.none,
+                          ),
                         ),
-                      ),
-                      child: const Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          // Icon(Icons.card)
-                        ],
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const SvgPicture(
+                                AssetBytesLoader(
+                                  'assets/svgs/idcard_outline.svg.vec',
+                                ),
+                                semanticsLabel: 'ID card icon',
+                                colorFilter: ColorFilter.mode(
+                                  Color(0xFF4F46BA),
+                                  BlendMode.srcIn,
+                                ),
+                              ),
+                              Text(
+                                fileName ?? 'Click to select file',
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                              const Icon(
+                                Icons.cloud_upload_outlined,
+                                size: 30.0,
+                                color: Color(0xFF3734A9),
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
                     ),
                   ),
