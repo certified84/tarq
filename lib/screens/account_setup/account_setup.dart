@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tarq/components/buttons.dart';
 import 'package:tarq/data/model/setup_info.dart';
 import 'package:tarq/screens/account_setup/account_setup_progress.dart';
+import 'package:vector_graphics/vector_graphics.dart';
 
 class AccountSetupScreen extends StatelessWidget {
   AccountSetupScreen({Key? key}) : super(key: key);
@@ -11,28 +13,28 @@ class AccountSetupScreen extends StatelessWidget {
       'Verify Your Email',
       'Please confirm the validity of your email by verifying it.',
       const Color(0xFFF9D897),
-      'assets/svgs/mail.svg',
+      'assets/svgs/mail.svg.vec',
       'email',
     ),
     SetupInfo(
       'Fill your personal details ',
       'Completely fill all the details required from your personal information',
       const Color(0xFF97BEF9),
-      'assets/svgs/person.svg',
+      'assets/svgs/person.svg.vec',
       'personnal',
     ),
     SetupInfo(
       'Setup Your Work Place Details',
       'Please complete all the required fields with your workplace information.',
       const Color(0xFF97F9E1),
-      'assets/svgs/work_filled.svg',
+      'assets/svgs/work_filled.svg.vec',
       'work',
     ),
     SetupInfo(
       'Add Card',
       'Please add the card associated with your bank account.',
       const Color(0xFFF9AF97),
-      'assets/svgs/credit_card.svg',
+      'assets/svgs/credit_card.svg.vec',
       'card',
     ),
   ];
@@ -120,10 +122,16 @@ class AccountSetupScreen extends StatelessWidget {
                 color: setupInfo.color,
                 borderRadius: BorderRadius.circular(5),
               ),
-              // child: SvgPicture.asset(
-              //   setupInfo.icon,
-              //   semanticsLabel: 'Setup Info Icon',
-              // ),
+              child: SvgPicture(
+                AssetBytesLoader(
+                  setupInfo.icon,
+                ),
+                semanticsLabel: 'ID card icon',
+                colorFilter: const ColorFilter.mode(
+                  Colors.white,
+                  BlendMode.srcIn,
+                ),
+              ),
             ),
             Container(
               padding: const EdgeInsets.only(left: 8),
