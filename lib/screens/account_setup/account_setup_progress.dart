@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tarq/data/model/setup_info.dart';
+import 'package:tarq/screens/add_salary_account.dart';
 import 'package:tarq/screens/complete_profile.dart';
 import 'package:tarq/screens/work_place.dart';
 
@@ -103,7 +104,6 @@ class _AccountSetupProgressScreenState
   Widget _progressWidget(SetupInfo setupInfo) {
     return GestureDetector(
         onTap: () {
-          print("fuck");
           switch (setupInfo.which) {
             case 'email':
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -128,6 +128,10 @@ class _AccountSetupProgressScreenState
               break;
 
             case 'card':
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const AddSalaryAccountScreen()));
               break;
 
             default:

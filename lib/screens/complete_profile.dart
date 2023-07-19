@@ -86,7 +86,7 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                   dropdownTextField(
                     width: _deviceWidth,
                     expanded: phoneExpanded,
-                    hintText: 'Please Enter phone number',
+                    hintText: 'Your phone number',
                     onPressed: () {
                       setState(() {
                         phoneExpanded = !phoneExpanded;
@@ -104,7 +104,8 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                   const SizedBox(height: 8),
                   textField(
                     width: _deviceWidth,
-                    hintText: 'Please enter your name',
+                    readOnly: true,
+                    hintText: 'Your full name',
                     onPressed: () {
                       setState(() {
                         phoneExpanded = !phoneExpanded;
@@ -141,7 +142,7 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                   dropdownTextField(
                     width: _deviceWidth,
                     expanded: stateExpanded,
-                    hintText: 'Please Select',
+                    hintText: 'Please select',
                     onPressed: () {
                       setState(() {
                         stateExpanded = !stateExpanded;
@@ -160,7 +161,7 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                   dropdownTextField(
                     width: _deviceWidth,
                     expanded: lgaExpanded,
-                    hintText: 'Please Select',
+                    hintText: 'Please select',
                     onPressed: () {
                       setState(() {
                         lgaExpanded = !lgaExpanded;
@@ -188,7 +189,7 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                   const SizedBox(height: 16),
                   Center(
                     child: actionButton(
-                      width: _deviceWidth * 0.7,
+                      width: _deviceWidth,
                       text: 'Save & Continue',
                       onPressed: () {},
                     ),

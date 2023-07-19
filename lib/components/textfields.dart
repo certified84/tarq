@@ -1,15 +1,15 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 Widget textField(
     {required double width,
     TextInputType? keyboardType,
     String? hintText,
+    bool readOnly = false,
     void Function()? onPressed}) {
   return SizedBox(
     width: width,
     child: TextFormField(
+      readOnly: readOnly,
       style: const TextStyle(
         fontWeight: FontWeight.w500,
         fontSize: 14,
