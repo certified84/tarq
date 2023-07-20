@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tarq/data/model/setup_info.dart';
 import 'package:tarq/screens/add_salary_account.dart';
+import 'package:tarq/screens/bvn_input.dart';
 import 'package:tarq/screens/complete_profile.dart';
 import 'package:tarq/screens/work_place.dart';
 
@@ -117,7 +118,7 @@ class _AccountSetupProgressScreenState
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const CompleteProfileScreen()));
+                      builder: (context) => const BvnInputScreen()));
               break;
 
             case 'work':
