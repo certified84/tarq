@@ -1,8 +1,7 @@
-import 'dart:collection';
-
 import 'package:flutter/material.dart';
 import 'package:tarq/components/buttons.dart';
 import 'package:tarq/components/textfields.dart';
+import 'package:tarq/screens/phone_otp.dart';
 
 class BvnInputScreen extends StatefulWidget {
   const BvnInputScreen({super.key});
@@ -106,6 +105,7 @@ class _BvnInputScreenState extends State<BvnInputScreen> {
                   textField(
                     width: _deviceWidth,
                     hintText: 'Please enter your BVN',
+                    keyboardType: TextInputType.number,
                     onPressed: () {
                       setState(() {
                         phoneExpanded = !phoneExpanded;
@@ -210,7 +210,12 @@ class _BvnInputScreenState extends State<BvnInputScreen> {
                     child: actionButton(
                       width: _deviceWidth,
                       text: 'Save & Continue',
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const PhoneOTPScreen()));
+                      },
                     ),
                   ),
                 ],
