@@ -5,10 +5,12 @@ Widget textField(
     TextInputType? keyboardType,
     String? hintText,
     bool readOnly = false,
+    bool enabled = true,
     void Function()? onPressed}) {
   return SizedBox(
     width: width,
     child: TextFormField(
+      enabled: enabled,
       cursorColor: const Color(0xFF3734A9),
       readOnly: readOnly,
       style: const TextStyle(
@@ -103,11 +105,13 @@ Widget dropdownTextField(
     TextInputType? keyboardType,
     String? hintText,
     required bool expanded,
+    bool enabled = true,
     required Function()? onPressed,
     void Function(String)? onChanged}) {
   return SizedBox(
     width: width,
     child: TextFormField(
+      enabled: enabled,
       readOnly: true,
       enableSuggestions: false,
       autocorrect: false,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tarq/components/buttons.dart';
 import 'package:tarq/components/textfields.dart';
+import 'package:tarq/screens/complete_profile.dart';
 
 class PhoneOTPScreen extends StatefulWidget {
   const PhoneOTPScreen({Key? key}) : super(key: key);
@@ -100,6 +101,10 @@ class _PhoneOTPScreenState extends State<PhoneOTPScreen> {
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                   content: Text(otp),
                 ));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const CompleteProfileScreen()));
               },
             ),
           ],

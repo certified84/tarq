@@ -64,7 +64,7 @@ class AccountSetupScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 4),
+              const SizedBox(height: 8),
               const Text(
                 'To fully activate your account and become eligible for a loans, your need to provide the following information.',
                 textAlign: TextAlign.center,
@@ -111,13 +111,15 @@ class AccountSetupScreen extends StatelessWidget {
 
   Widget _informationWidget(SetupInfo setupInfo) {
     return Container(
-        padding: const EdgeInsets.only(top: 16),
+        margin: const EdgeInsets.only(top: 24),
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
               width: 40,
               height: 40,
               padding: const EdgeInsets.all(8),
+              margin: const EdgeInsets.only(right: 10),
               decoration: BoxDecoration(
                 color: setupInfo.color,
                 borderRadius: BorderRadius.circular(5),
@@ -133,9 +135,7 @@ class AccountSetupScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
-              padding: const EdgeInsets.only(left: 8),
-              // width: _deviceWidth * .79,
+            Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -144,18 +144,18 @@ class AccountSetupScreen extends StatelessWidget {
                     style: const TextStyle(
                       color: Color(0xFF1D3A70),
                       fontWeight: FontWeight.bold,
-                      fontSize: 14,
+                      fontSize: 16,
                     ),
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    softWrap: false,
+                    softWrap: true,
                     overflow: TextOverflow.clip,
                     setupInfo.description,
                     style: const TextStyle(
                       color: Color(0xFF80858A),
                       fontWeight: FontWeight.bold,
-                      fontSize: 10,
+                      fontSize: 12,
                     ),
                   ),
                 ],

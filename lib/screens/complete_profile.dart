@@ -86,6 +86,7 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                   dropdownTextField(
                     width: _deviceWidth,
                     expanded: phoneExpanded,
+                    enabled: false,
                     hintText: 'Your phone number',
                     onPressed: () {
                       setState(() {
@@ -104,7 +105,7 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                   const SizedBox(height: 8),
                   textField(
                     width: _deviceWidth,
-                    readOnly: true,
+                    enabled: false,
                     hintText: 'Your full name',
                     onPressed: () {
                       setState(() {
