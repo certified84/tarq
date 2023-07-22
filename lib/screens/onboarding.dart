@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:tarq/components/buttons.dart';
 import 'package:tarq/data/model/onboarding_item.dart';
 import 'package:tarq/screens/signup.dart';
 
 class OnboardingScreen extends StatefulWidget {
-  OnboardingScreen({super.key});
+  const OnboardingScreen({super.key});
 
   @override
   State<StatefulWidget> createState() => _OnboardingScreenState();
@@ -19,20 +20,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         "assets/images/onboarding2.png",
         "The fastest transaction process only here",
         "Get easy to pay all your bills with just a few steps. Paying your bills becoome fast and efficient"),
-    OnboardingItem("assets/images/onboarding1.png", "title", "description"),
   ];
   final _pageController = PageController();
-  var currentPage = 0.0;
+  var currentPage = 0;
 
   @override
   Widget build(BuildContext context) {
     _deviceHeight = MediaQuery.of(context).size.height;
     _deviceWidth = MediaQuery.of(context).size.width;
-    _pageController.addListener(
-      () => setState(() {
-        currentPage = _pageController.page!;
-      }),
-    );
 
     return Scaffold(
       body: SafeArea(
@@ -71,49 +66,28 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     height: _deviceHeight * .6,
                     child: PageView(
                       controller: _pageController,
+                      onPageChanged: (page) => {
+                        setState(() {
+                          currentPage = page;
+                        }),
+                        print('Page: ${_pageController.page!.toInt()}'),
+                        print('CurrentPage: $currentPage')
+                      },
                       children: onboardingItems
                           .map((e) => _onboaringItemWidget(e))
                           .toList(),
                     ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: onboardingItems
-                        .map((e) => _pageIndicator(_pageController.hasClients &&
-                            _pageController.page! == currentPage))
-                        .toList(),
-                  ),
-                  SizedBox(
+                  _pageIndicator(onboardingItems.length),
+                  actionButton(
                     width: _deviceWidth * .85,
-                    height: 50,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const SignUpScreen()));
-                      },
-                      style: ButtonStyle(
-                        foregroundColor:
-                            MaterialStateProperty.all<Color>(Colors.white),
-                        backgroundColor: MaterialStateProperty.all<Color>(
-                            const Color(0xFF3734A9)),
-                        shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(16),
-                          ),
-                        ),
-                      ),
-                      child: const Text(
-                        'Get Started',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14,
-                        ),
-                      ),
-                    ),
+                    text: 'Get Started',
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const SignUpScreen()));
+                    },
                   ),
                 ],
               ),
@@ -146,7 +120,19 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     );
   }
 
-  Widget _pageIndicator(bool isSelected) {
+  Widget _pageIndicator(int size) {
+    List<Widget> indicators = [];
+    for (int i = 0; i < size; i++) {
+      indicators.add(_indicator(i == currentPage));
+    }
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: indicators,
+    );
+  }
+
+  Widget _indicator(bool isSelected) {
+    print('Selected: $isSelected');
     if (isSelected) {
       return (Container(
         width: 32,
