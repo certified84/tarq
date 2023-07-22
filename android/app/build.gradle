@@ -21,12 +21,15 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
+apply pluging: 'com.google.gms.google-services'
+apply pluging: 'com.google.firebase.crashlytics'
+apply pluging: 'com.google.firebase.firebase-perf'
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
-    namespace "com.example.tarq"
+    namespace "com.certified.tarq"
     compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
@@ -45,13 +48,13 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.example.tarq"
+        applicationId "com.certified.tarq"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion flutter.minSdkVersion
-        targetSdkVersion flutter.targetSdkVersion
-        versionCode flutterVersionCode.toInteger()
-        versionName flutterVersionName
+        minSdkVersion 21
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
     }
 
     buildTypes {
