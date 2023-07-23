@@ -70,8 +70,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         setState(() {
                           currentPage = page;
                         }),
-                        print('Page: ${_pageController.page!.toInt()}'),
-                        print('CurrentPage: $currentPage')
                       },
                       children: onboardingItems
                           .map((e) => _onboaringItemWidget(e))
@@ -132,7 +130,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   }
 
   Widget _indicator(bool isSelected) {
-    print('Selected: $isSelected');
     if (isSelected) {
       return (Container(
         width: 32,

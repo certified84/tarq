@@ -228,7 +228,7 @@ class _BvnInputScreenState extends State<BvnInputScreen> {
   }
 
   Widget _questionWidget(String question, String answer) {
-    return Container(
+    return SizedBox(
       width: _deviceWidth,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
